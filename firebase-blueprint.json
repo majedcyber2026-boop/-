@@ -1,0 +1,199 @@
+{
+  "entities": {
+    "Product": {
+      "title": "Product",
+      "description": "Smartphones and premium mobile accessories",
+      "type": "object",
+      "properties": {
+        "name": { "type": "string", "maxLength": 200 },
+        "brand": { "type": "string", "maxLength": 100 },
+        "category": { "type": "string", "maxLength": 100 },
+        "price": { "type": "number" },
+        "cost": { "type": "number" },
+        "quantity": { "type": "number" },
+        "images": { "type": "array" },
+        "description": { "type": "string", "maxLength": 5000 },
+        "isActive": { "type": "boolean" },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["name", "brand", "category", "price", "quantity"]
+    },
+    "Order": {
+      "title": "Order",
+      "description": "Customer purchase order",
+      "type": "object",
+      "properties": {
+        "customerName": { "type": "string", "maxLength": 100 },
+        "phone": { "type": "string", "maxLength": 20 },
+        "governorate": { "type": "string", "maxLength": 50 },
+        "address": { "type": "string", "maxLength": 255 },
+        "items": { "type": "array" },
+        "total": { "type": "number" },
+        "paymentMethod": { "type": "string", "maxLength": 50 },
+        "paymentStatus": { "type": "string", "maxLength": 50 },
+        "receiptImage": { "type": "string", "maxLength": 1000 },
+        "priority": { "type": "string", "maxLength": 50 },
+        "status": { "type": "string", "maxLength": 50 },
+        "notes": { "type": "string", "maxLength": 1000 },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["customerName", "phone", "items", "total", "status"]
+    },
+    "SpecialOrder": {
+      "title": "SpecialOrder",
+      "description": "Customer request for unavailable products",
+      "type": "object",
+      "properties": {
+        "productName": { "type": "string", "maxLength": 200 },
+        "quantity": { "type": "number" },
+        "neededBy": { "type": "string", "maxLength": 100 },
+        "notes": { "type": "string", "maxLength": 1000 },
+        "phone": { "type": "string", "maxLength": 20 },
+        "status": { "type": "string", "maxLength": 50 },
+        "adminReply": { "type": "string", "maxLength": 1000 },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["productName", "phone", "status"]
+    },
+    "Customer": {
+      "title": "Customer",
+      "description": "Customer profile and loyalty info",
+      "type": "object",
+      "properties": {
+        "name": { "type": "string", "maxLength": 100 },
+        "phone": { "type": "string", "maxLength": 20 },
+        "governorate": { "type": "string", "maxLength": 50 },
+        "totalSpent": { "type": "number" },
+        "ordersCount": { "type": "number" },
+        "points": { "type": "number" },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["name", "phone"]
+    },
+    "PaymentMethod": {
+      "title": "PaymentMethod",
+      "description": "Supported electronic wallets and cash accounts",
+      "type": "object",
+      "properties": {
+        "walletName": { "type": "string", "maxLength": 100 },
+        "accountNumber": { "type": "string", "maxLength": 100 },
+        "accountName": { "type": "string", "maxLength": 100 },
+        "isActive": { "type": "boolean" }
+      },
+      "required": ["walletName", "accountNumber", "accountName"]
+    },
+    "Review": {
+      "title": "Review",
+      "description": "Customer product reviews and ratings",
+      "type": "object",
+      "properties": {
+        "productId": { "type": "string", "maxLength": 128 },
+        "customerName": { "type": "string", "maxLength": 100 },
+        "rating": { "type": "number" },
+        "comment": { "type": "string", "maxLength": 1000 },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["productId", "customerName", "rating", "comment"]
+    },
+    "Coupon": {
+      "title": "Coupon",
+      "description": "Discount vouchers and promotional codes",
+      "type": "object",
+      "properties": {
+        "code": { "type": "string", "maxLength": 50 },
+        "discount": { "type": "number" },
+        "isActive": { "type": "boolean" },
+        "expiryDate": { "type": "string", "maxLength": 50 }
+      },
+      "required": ["code", "discount", "isActive"]
+    },
+    "MaintenanceRequest": {
+      "title": "MaintenanceRequest",
+      "description": "Device repair and maintenance tracker",
+      "type": "object",
+      "properties": {
+        "customerName": { "type": "string", "maxLength": 100 },
+        "phone": { "type": "string", "maxLength": 20 },
+        "deviceModel": { "type": "string", "maxLength": 100 },
+        "issue": { "type": "string", "maxLength": 1000 },
+        "status": { "type": "string", "maxLength": 50 },
+        "receivedAt": { "type": "string", "maxLength": 50 },
+        "deliveredAt": { "type": "string", "maxLength": 50 },
+        "notes": { "type": "string", "maxLength": 1000 }
+      },
+      "required": ["customerName", "phone", "deviceModel", "issue", "status"]
+    },
+    "Notification": {
+      "title": "Notification",
+      "description": "Store notifications for customers and staff",
+      "type": "object",
+      "properties": {
+        "userId": { "type": "string", "maxLength": 128 },
+        "title": { "type": "string", "maxLength": 200 },
+        "body": { "type": "string", "maxLength": 1000 },
+        "isRead": { "type": "boolean" },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["title", "body"]
+    },
+    "Settings": {
+      "title": "Settings",
+      "description": "Store branding and general settings",
+      "type": "object",
+      "properties": {
+        "storeName": { "type": "string", "maxLength": 100 },
+        "storeNameEn": { "type": "string", "maxLength": 100 },
+        "phone": { "type": "string", "maxLength": 50 },
+        "whatsapp": { "type": "string", "maxLength": 50 },
+        "instagram": { "type": "string", "maxLength": 100 },
+        "address": { "type": "string", "maxLength": 255 },
+        "aboutUs": { "type": "string", "maxLength": 3000 },
+        "returnPolicy": { "type": "string", "maxLength": 3000 },
+        "privacyPolicy": { "type": "string", "maxLength": 3000 }
+      },
+      "required": ["storeName", "phone", "whatsapp"]
+    }
+  },
+  "firestore": {
+    "/products/{productId}": {
+      "schema": "#/entities/Product",
+      "description": "Products catalog"
+    },
+    "/orders/{orderId}": {
+      "schema": "#/entities/Order",
+      "description": "Store purchases and orders"
+    },
+    "/specialOrders/{specialOrderId}": {
+      "schema": "#/entities/SpecialOrder",
+      "description": "Customer special custom orders"
+    },
+    "/customers/{customerId}": {
+      "schema": "#/entities/Customer",
+      "description": "Registered and guest customers list"
+    },
+    "/paymentMethods/{methodId}": {
+      "schema": "#/entities/PaymentMethod",
+      "description": "Electronic wallet bank accounts"
+    },
+    "/reviews/{reviewId}": {
+      "schema": "#/entities/Review",
+      "description": "Product customer reviews"
+    },
+    "/coupons/{couponId}": {
+      "schema": "#/entities/Coupon",
+      "description": "Discount coupon codes"
+    },
+    "/maintenanceRequests/{requestId}": {
+      "schema": "#/entities/MaintenanceRequest",
+      "description": "Hardware maintenance and repair jobs"
+    },
+    "/notifications/{notificationId}": {
+      "schema": "#/entities/Notification",
+      "description": "System notices and updates"
+    },
+    "/settings/{settingId}": {
+      "schema": "#/entities/Settings",
+      "description": "Store public configuration and policies"
+    }
+  }
+}

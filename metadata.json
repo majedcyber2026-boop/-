@@ -1,0 +1,6 @@
+{
+  "name": "WAKNOVA - الوكالة الحديثة للهواتف الذكية",
+  "description": "متجر WAKNOVA - الوكالة الحديثة للهواتف الذكية ومستلزماتها باليمن. أحدث الهواتف، الشواحن السريعة، السماعات الأصلية، والملحقات الفاخرة.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

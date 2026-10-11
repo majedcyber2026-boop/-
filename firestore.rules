@@ -1,0 +1,85 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Helper functions
+    function isSignedIn() {
+      return request.auth != null;
+    }
+    
+    function isAdmin() {
+      return isSignedIn() && (
+        request.auth.token.email == 'majedcyber2026@gmail.com' ||
+        exists(/databases/$(database)/documents/admins/$(request.auth.uid))
+      );
+    }
+
+    // Admins
+    match /admins/{adminId} {
+      allow read, write: if true;
+    }
+
+    // Products (Public read, allow write for catalog management & seeding)
+    match /products/{productId} {
+      allow read, write: if true;
+    }
+
+    // Orders (Public read & write for placement and tracking)
+    match /orders/{orderId} {
+      allow read, write: if true;
+    }
+
+    // Special Orders (Custom requests)
+    match /specialOrders/{specialOrderId} {
+      allow read, write: if true;
+    }
+
+    // Customers & Users (Profiles, loyalty points, roles, wallet)
+    match /customers/{customerId} {
+      allow read, write: if true;
+    }
+
+    match /users/{userId} {
+      allow read, write: if true;
+    }
+
+    // Payment Methods (Yemeni payment wallets)
+    match /paymentMethods/{methodId} {
+      allow read, write: if true;
+    }
+
+    // Reviews (Product ratings & feedback)
+    match /reviews/{reviewId} {
+      allow read, write: if true;
+    }
+
+    // Coupons (Discount codes)
+    match /coupons/{couponId} {
+      allow read, write: if true;
+    }
+
+    // Maintenance Requests (Device repair tracking)
+    match /maintenanceRequests/{requestId} {
+      allow read, write: if true;
+    }
+
+    // RMA Requests (Golden warranty & replacement)
+    match /rmaRequests/{rmaId} {
+      allow read, write: if true;
+    }
+
+    // Notifications
+    match /notifications/{notificationId} {
+      allow read, write: if true;
+    }
+
+    // Customer Inquiries & AI Chat Escalations
+    match /inquiries/{inquiryId} {
+      allow read, write: if true;
+    }
+
+    // Settings (Store configuration, policies, contacts)
+    match /settings/{settingId} {
+      allow read, write: if true;
+    }
+  }
+}
